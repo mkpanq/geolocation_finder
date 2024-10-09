@@ -8,7 +8,7 @@ gem "rack-cors", "~> 2.0.2"
 gem "faraday", "~> 2.12.0"
 
 group :development, :test do
-  gem "debug", "~> 1.9.2", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "byebug", "~> 11.1.3"
   gem "brakeman", "~> 6.2.1", require: false
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
 end

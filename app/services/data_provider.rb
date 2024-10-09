@@ -6,6 +6,16 @@ class DataProvider
   end
 
   def call(query)
+    query_validator(query)
+
     @api_client.call(query)
+  end
+
+  private
+
+  def query_validator(query)
+    unless RegexMatchers.domain_match(query) || RegexMatchers.ip_match(query)
+      raise Errors::QueryValidationError
+    end
   end
 end
