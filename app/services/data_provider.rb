@@ -1,4 +1,4 @@
-class GetLocationDataService
+class DataProvider
   attr_reader :api_client
 
   def initialize(api_client:)
