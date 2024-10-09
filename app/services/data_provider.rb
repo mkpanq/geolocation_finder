@@ -15,7 +15,7 @@ class DataProvider
 
   def query_validator(query)
     unless RegexMatchers.domain_match(query) || RegexMatchers.ip_match(query)
-      raise Errors::QueryValidationError
+      raise CustomErrors::QueryValidationError
     end
   end
 end

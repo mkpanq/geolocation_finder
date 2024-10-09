@@ -6,17 +6,17 @@ module Api::V1
       @location_data_service = LocationDataService.new
     end
 
+    def get_location
+      location = @location_data_service.get_geological_data(params[:query])
+
+      render json: location, status: :ok
+    end
+
     def save_location
       refresh_data = params[:refresh]&.downcase.to_s == "true" ? true : false
       saved_location = @location_data_service.add_geological_data(params[:query], refresh_data)
 
       render json: saved_location, status: :created
-    end
-
-    def get_location
-      location = @location_data_service.get_geological_data(params[:query])
-
-      render json: location, status: :ok
     end
 
     def delete_location

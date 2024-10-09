@@ -1,4 +1,4 @@
-module Errors
+module CustomErrors
   class QueryValidationError < StandardError
     attr_reader :status
 

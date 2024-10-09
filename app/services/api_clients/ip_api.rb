@@ -9,13 +9,13 @@ module ApiClients
       begin
         response = client.get(query)
         data = response.body
-        raise Errors::NotFoundError if data["status"] == "fail"
+        raise CustomErrors::NotFoundError if data["status"] == "fail"
 
         IpApi.serializer(query, data)
       rescue Faraday::TooManyRequestsError
-        raise Errors::TooManyRequestsError
+        raise CustomErrors::TooManyRequestsError
       rescue Faraday::Error
-        raise Errors::ServerError
+        raise CustomErrors::ServerError
       end
     end
 

@@ -6,14 +6,14 @@ class LocationDataService
   def get_geological_data(query)
     potential_location = find_location_by_query(query)
 
-    potential_location || raise(Errors::NotFoundError)
+    potential_location || raise(CustomErrors::NotFoundError)
   end
 
   def add_geological_data(query, refresh = false)
     potential_location = find_location_by_query(query)
 
     if potential_location
-      raise Errors::DataAlreadyExistsError unless refresh
+      raise CustomErrors::DataAlreadyExistsError unless refresh
 
       data = getData(query)
       potential_location.update!(data)
@@ -27,7 +27,7 @@ class LocationDataService
   def delete_geological_data(query)
     potential_location = find_location_by_query(query)
 
-    potential_location || raise(Errors::NotFoundError)
+    potential_location || raise(CustomErrors::NotFoundError)
 
     potential_location.destroy!
     potential_location
