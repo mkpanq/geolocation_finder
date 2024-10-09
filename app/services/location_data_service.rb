@@ -9,9 +9,6 @@ class LocationDataService
     potential_location || raise(Errors::NotFoundError)
   end
 
-  def remove_geological_data(query)
-  end
-
   def add_geological_data(query, refresh = false)
     potential_location = find_location_by_query(query)
 
@@ -25,6 +22,15 @@ class LocationDataService
 
     data = getData(query)
     GeoLocation.create!(data)
+  end
+
+  def delete_geological_data(query)
+    potential_location = find_location_by_query(query)
+
+    potential_location || raise(Errors::NotFoundError)
+
+    potential_location.destroy!
+    potential_location
   end
 
   private

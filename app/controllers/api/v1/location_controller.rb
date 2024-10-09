@@ -19,7 +19,11 @@ module Api::V1
       render json: location, status: :ok
     end
 
-    def deleteLocation; end
+    def delete_location
+      deleted_location = @location_data_service.delete_geological_data(params[:query])
+
+      render json: deleted_location, status: :ok
+    end
 
     private
 
