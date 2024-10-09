@@ -13,13 +13,18 @@ module Api::V1
       render json: saved_location, status: :created
     end
 
-    def get_location; end
+    def get_location
+      location = @location_data_service.get_geological_data(params[:query])
+
+      render json: location, status: :ok
+    end
+
     def deleteLocation; end
 
     private
 
     def handle_error(exception)
-      render json: { error: exception.message }, status: exception.status || :internal_server_error
+      render json: { error: exception.message }, status: (exception.try(:status) || :internal_server_error)
     end
   end
 end

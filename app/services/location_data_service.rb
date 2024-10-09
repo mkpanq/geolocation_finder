@@ -3,10 +3,13 @@ class LocationDataService
     @data_provider = DataProvider.new(api_client: ApiClients::IpApi)
   end
 
-  def get_geological_data
+  def get_geological_data(query)
+    potential_location = find_location_by_query(query)
+
+    potential_location || raise(Errors::NotFoundError)
   end
 
-  def remove_geological_data
+  def remove_geological_data(query)
   end
 
   def add_geological_data(query, refresh = false)
@@ -27,7 +30,7 @@ class LocationDataService
   private
 
   def find_location_by_query(query)
-    GeoLocation.where(Arel.sql("query LIKE '%#{query}%' OR domain LIKE '%#{query}%' OR ip LIKE '%#{query}%'")).first
+    GeoLocation.where(query: query).or(GeoLocation.where(domain: query)).or(GeoLocation.where(ip: query)).first
   end
 
   def getData(query)
