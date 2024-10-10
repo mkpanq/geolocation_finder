@@ -23,7 +23,7 @@ RSpec.describe ApiClients::IpApi do
     }
   }
 
-  describe '.call' do
+  describe '#call' do
     context 'when the API returns success data', vcr: { cassette_name: "ip_api_success_response" } do
       it 'returns data from the API' do
           result = described_class.call(proper_query)

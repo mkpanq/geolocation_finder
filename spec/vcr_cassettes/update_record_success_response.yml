@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ip-api.com/json/example.com?fields=1079295
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 10 Oct 2024 10:21:42 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '278'
+      access-control-allow-origin:
+      - "*"
+      x-ttl:
+      - '36'
+      x-rl:
+      - '43'
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","continent":"Europe","country":"United Kingdom","countryCode":"GB","region":"ENG","regionName":"England","city":"London","zip":"W1B","lat":51.5072,"lon":-0.127586,"timezone":"Europe/London","isp":"Edgecast
+        Inc.","org":"","reverse":"","query":"93.184.215.14"}'
+  recorded_at: Thu, 10 Oct 2024 10:21:42 GMT
+recorded_with: VCR 6.3.1
