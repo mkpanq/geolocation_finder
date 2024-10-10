@@ -7,8 +7,13 @@ gem "tzinfo-data", "~> 1.2024.2", platforms: %i[ windows jruby ]
 gem "rack-cors", "~> 2.0.2"
 gem "faraday", "~> 2.12.0"
 
+group :test do
+  gem "vcr", "~> 6.3.1"
+end
+
 group :development, :test do
   gem "byebug", "~> 11.1.3"
   gem "brakeman", "~> 6.2.1", require: false
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
+  gem "rspec-rails", "~> 7.0.1"
 end

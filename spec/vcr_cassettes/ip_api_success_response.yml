@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ip-api.com/json/wp.pl?fields=1079295
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 10 Oct 2024 09:27:58 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '310'
+      access-control-allow-origin:
+      - "*"
+      x-ttl:
+      - '60'
+      x-rl:
+      - '44'
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","continent":"Europe","country":"Poland","countryCode":"PL","region":"14","regionName":"Mazovia","city":"Warsaw","zip":"00-510","lat":52.2297,"lon":21.0122,"timezone":"Europe/Warsaw","isp":"Wirtualna
+        Polska Media S.A.","org":"Wirtualna Polska SA","reverse":"www.wp.pl","query":"212.77.98.9"}'
+  recorded_at: Thu, 10 Oct 2024 09:27:58 GMT
+recorded_with: VCR 6.3.1
