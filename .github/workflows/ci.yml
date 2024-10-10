@@ -20,7 +20,7 @@ jobs:
           bundler-cache: true
 
       - name: Run RSpec
-        run: rake spec
+        run: bundle exec rake spec
 
   scan_ruby:
     runs-on: ubuntu-latest
