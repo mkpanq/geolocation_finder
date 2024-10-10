@@ -7,7 +7,7 @@ Geolocation Finder is a simple Rails API application that uses an external API t
 1. Clone the repository:
 
 ```
-git clone https://github.com/yourusername/geolocation-finder.git
+git clone git@github.com:mkpanq/geolocation_finder.git
 cd geolocation-finder
 ```
 
