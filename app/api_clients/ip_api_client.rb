@@ -2,13 +2,14 @@ class IpApiClient < ApiClient
   API_BASE_URL = "http://ip-api.com/json/"
   API_FIELDS_PARAMS_CODE="1079295"
 
-  def initialize
-    @client = generateFaradayClient(API_BASE_URL)
+  def initialize(http_client = FaradayHttpClient.new(API_BASE_URL, params = {
+    "fields" => API_FIELDS_PARAMS_CODE
+  }))
+    @client = http_client
   end
 
   def call(query)
-    @client.params["fields"]=API_FIELDS_PARAMS_CODE
-
+    # @client.params["fields"]=API_FIELDS_PARAMS_CODE
     begin
       response = @client.get(query)
       data = response.body

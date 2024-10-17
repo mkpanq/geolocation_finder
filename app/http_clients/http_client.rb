@@ -1,5 +1,5 @@
-class ApiClient
-  def call(*args)
+class HttpClient
+  def get(*args)
     raise NotImplementedError
   end
 end
