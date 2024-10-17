@@ -9,7 +9,6 @@ class IpApiClient < ApiClient
   end
 
   def call(query)
-    # @client.params["fields"]=API_FIELDS_PARAMS_CODE
     begin
       response = @client.get(query)
       data = response.body
