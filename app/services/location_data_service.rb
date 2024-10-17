@@ -1,45 +1,34 @@
 class LocationDataService
   def initialize
     @data_provider = DataProvider.new(api_client: ApiClients::IpApi)
+    @repository = GeoLocationRepository.new
   end
 
   def get_geological_data(query)
-    potential_location = find_location_by_query(query)
-
+    potential_location = @repository.find_location_by_query(query)
     potential_location || raise(CustomErrors::NotFoundError)
   end
 
   def add_geological_data(query, refresh = false)
-    potential_location = find_location_by_query(query)
+    potential_location = @repository.find_location_by_query(query)
 
     if potential_location
       raise CustomErrors::DataAlreadyExistsError unless refresh
 
-      data = getData(query)
-      potential_location.update!(data)
+      data = @data_provider.call(query)
+      @repository.update(potential_location, data)
+
       return potential_location
     end
 
-    data = getData(query)
-    GeoLocation.create!(data)
+    data = @data_provider.call(query)
+    @repository.create(data)
   end
 
   def delete_geological_data(query)
-    potential_location = find_location_by_query(query)
-
+    potential_location = @repository.find_location_by_query(query)
     potential_location || raise(CustomErrors::NotFoundError)
 
-    potential_location.destroy!
-    potential_location
-  end
-
-  private
-
-  def find_location_by_query(query)
-    GeoLocation.where(query: query).or(GeoLocation.where(domain: query)).or(GeoLocation.where(ip: query)).first
-  end
-
-  def getData(query)
-    @data_provider.call(query)
+    @repository.delete(potential_location)
   end
 end
