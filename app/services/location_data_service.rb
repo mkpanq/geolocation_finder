@@ -1,7 +1,10 @@
+# TODO: Refactor
 class LocationDataService
   def initialize
-    @data_provider = DataProvider.new(api_client: ApiClients::IpApi)
     @repository = GeoLocationRepository.new
+    @data_provider = IpApiClient.new
+    @query_validator = IpApiQueryValidator.new
+    @data_serializer = IpApiDataSerializer.new
   end
 
   def get_geological_data(query)
