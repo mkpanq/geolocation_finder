@@ -1,9 +1,9 @@
 class IpLocationDataService < DataService
   def initialize(
-    repository = GeoLocationRepository.new,
-    data_provider = IpApiClient.new,
-    query_validator = IpApiQueryValidator.new,
-    data_serializer = IpApiDataSerializer.new
+    repository,
+    data_provider,
+    query_validator,
+    data_serializer
   )
     @repository = repository
     @data_provider = data_provider
