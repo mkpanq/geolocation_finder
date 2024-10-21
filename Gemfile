@@ -13,7 +13,7 @@ end
 
 group :development, :test do
   gem "byebug", "~> 11.1.3"
-  gem "brakeman", "~> 6.2.1", require: false
+  gem "brakeman", "~> 6.2.2", require: false
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   gem "rspec-rails", "~> 7.0.1"
 end
