@@ -3,7 +3,7 @@ module Api::V1
     rescue_from Exception, with: :handle_error
 
     def initialize
-      @location_data_service = LocationDataService.new
+      @location_data_service = DataServiceFactory.create_ip_location_data_service
     end
 
     def get_location
