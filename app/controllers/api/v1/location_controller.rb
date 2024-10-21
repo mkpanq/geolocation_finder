@@ -1,6 +1,6 @@
 module Api::V1
   class LocationController < ApplicationController
-    rescue_from Exception, with: :handle_error
+    rescue_from StandardError, with: :handle_error
 
     def initialize
       @location_data_service = DataServiceFactory.create_ip_location_data_service
