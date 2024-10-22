@@ -10,16 +10,14 @@ class IpApiClient < ApiClient
   end
 
   def call(query)
-    begin
-      response = @client.get(query)
-      data = response.body
-      raise CustomErrors::NotFoundError if data["status"] == "fail"
+    response = @client.get(query)
+    data = response.body
+    raise CustomErrors::NotFoundError if data["status"] == "fail"
 
-      data
-    rescue Faraday::TooManyRequestsError
-      raise CustomErrors::TooManyRequestsError
-    rescue Faraday::Error
-      raise CustomErrors::ServerError
-    end
+    data
+  rescue Faraday::TooManyRequestsError
+    raise CustomErrors::TooManyRequestsError
+  rescue Faraday::Error
+    raise CustomErrors::ServerError
   end
 end
