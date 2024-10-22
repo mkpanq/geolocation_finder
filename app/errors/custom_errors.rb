@@ -8,6 +8,15 @@ module CustomErrors
     end
   end
 
+  class ModelValidationError < StandardError
+    attr_reader :status
+
+    def initialize(log)
+      super("Can't save object to the database: " + log)
+      @status = :unprocessable_entity
+    end
+  end
+
   class DataAlreadyExistsError < StandardError
     attr_reader :status
 
